@@ -1,0 +1,88 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        ListNode dummy = new ListNode(0);
+        ListNode curr = dummy;
+
+        int carry = 0;
+        
+        while(l1 != null || l2 != null || carry != 0){
+            int sum = carry;
+
+            if(l1 != null){
+                sum += l1.val;
+                l1 = l1.next;
+            }
+
+            if(l2 != null){
+                sum += l2.val;
+                l2 = l2.next;
+            }
+
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+        }
+        return dummy.next;
+    }
+}
+
+
+/*
+Algorithm: Linked List Simulation + Carry
+
+Approach:
+1. Create a dummy node to build the answer list.
+2. Maintain a carry variable (initially 0).
+3. Traverse both linked lists simultaneously.
+4. Add l1 value + l2 value + carry.
+5. Create a new node with (sum % 10).
+6. Update carry = sum / 10.
+7. Move both pointers and the result pointer.
+8. Continue until both lists are finished and carry becomes 0.
+9. Return dummy.next.
+
+Pattern Used:
+- Linked List
+- Simulation
+- Dummy Node
+- Carry Forward
+
+Time Complexity: O(max(m, n))
+
+Space Complexity: O(max(m, n))
+
+Key Learning:
+Process the linked lists digit by digit instead of converting them into numbers. Use a carry to simulate elementary addition.
+*/
