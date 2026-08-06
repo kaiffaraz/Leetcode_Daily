@@ -1,0 +1,35 @@
+class Solution {
+    public int smallestNumber(int n, int t) {
+        int ans = n;
+        int n1 = n / 10;
+        int n2 = n % 10;
+        if(n < 10){
+            n1 = 1;
+        }
+        while(ans <= ans + 10){
+            if(n2 % 10 == 0){
+                n1 = n1 + 1;
+                n2 = n2 % 10;
+            }
+            int mul = n1 * n2;
+            if(mul % t == 0){
+                return ans;
+            }
+            else{
+                n2 = n2 + 1;
+                ans = ans + 1;
+            }
+        }
+        return -1;
+    }
+}
+
+Technique:
+- Brute Force
+- Digit Extraction
+- Simulation
+
+Logic:
+- Check numbers from n onwards.
+- Calculate product of digits.
+- Return first number whose product is divisible by t.
